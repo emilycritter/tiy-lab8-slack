@@ -2,9 +2,8 @@
 
   <nav>
     <div class="nav-controls" id="left">
-      <p class="navbar-text navbar-left">
-        <i class="fa fa-slack" style="background: white; padding: 2px;"></i>&nbsp;&nbsp;slack
-      </p>
+      <i class="fa fa-slack" style="background: white; padding: 2px;"></i>
+      <p>slack</p>
     </div>
     <div class="nav-controls" id="right">
       <% if @current_user && @current_user.members.first %>
@@ -13,7 +12,11 @@
         <% end %>
       <% end %>
       <div class="navbar-btn">
-        <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+        <% if @current_user %>
+          <%= link_to "Sign out", sign_out_path, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Sign in", sign_in_path, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
 

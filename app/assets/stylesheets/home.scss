@@ -40,16 +40,20 @@ nav {
   }
   #left {
     float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    color: $font-color-white;
+    font-family: $tagline-font;
+    font-size: 24px;
+    font-weight: 400;
     i {
       color: $background-color;
       font-size: 18px;
       border-radius: 5px;
       background: white;
+      margin: 15px;
     }
-    color: $font-color-white;
-    font-family: $tagline-font;
-    font-size: 24px;
-    font-weight: 400;
   }
   #right {
     float: right;
@@ -62,9 +66,9 @@ nav {
       font-size: 18px;
     }
     .navbar-btn {
-      background: transparent;
       margin-right: 15px;
-      button {
+      .btn-primary {
+        background: transparent;
         border: 1px solid $font-color-white;
         color: $font-color-white;
       }
