@@ -1,6 +1,7 @@
 rooms#show
 
-<% @room.posts.each do |post| %>
-  <%= post.user.name %>
+<% @posts.each do |post| %>
+  <%= post.member.user.photo %>
+  <%= post.member.user.name %>
   <%= markdown post.post_content %>
 <% end %>

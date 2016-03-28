@@ -31,41 +31,38 @@ if Room.count == 0
   room = Room.new
   room.name = "hou_global"
   room.description = "All things H-Town"
-  room.user_id = 3
   room.save
 
   room = Room.new
   room.name = "hou_feb2016"
-  room.user_id = 3
   room.save
 
   room = Room.new
   room.name = "hou_feb2016_rails"
   room.description = "The most interesting class in the world"
-  room.user_id = 3
   room.save
 end
 
 if Member.count == 0
   Member.create! user_id: 1, room_id: 1
   Member.create! user_id: 2, room_id: 1
-  Member.create! user_id: 3, room_id: 1
+  Member.create! user_id: 3, room_id: 1, creator_boolean: true
 
-  Member.create! user_id: 1, room_id: 1
-  Member.create! user_id: 2, room_id: 1
-  Member.create! user_id: 3, room_id: 1
+  Member.create! user_id: 1, room_id: 2
+  Member.create! user_id: 2, room_id: 2
+  Member.create! user_id: 3, room_id: 2, creator_boolean: true
 
-  Member.create! user_id: 2, room_id: 1
-  Member.create! user_id: 3, room_id: 1
+  Member.create! user_id: 1, room_id: 3
+  Member.create! user_id: 3, room_id: 3, creator_boolean: true
 end
 
 if Post.count == 0
-  Post.create! user_id: 3, room_id: 1, post_content: "Welcome H-Town!"
-  Post.create! user_id: 2, room_id: 1, post_content: "I'm the campus operations manager for Houston. Reach out if you have any questions"
-  Post.create! user_id: 1, room_id: 1, post_content: "Thanks @dorton and @christieloyd. So happy to be here!"
+  Post.create! post_content: "Welcome H-Town!", member_id: 3
+  Post.create! post_content: "I'm the campus operations manager for Houston. Reach out if you have any questions", member_id: 2
+  Post.create! post_content: "Thanks @dorton and @christieloyd. So happy to be here!", member_id: 1
 
-  Post.create! user_id: 3, room_id: 2, post_content: "We start on Feb. 1 with breakfast at 9am. Gently Reminded."
-  Post.create! user_id: 2, room_id: 2, post_content: "We have donuts!!"
+  Post.create! post_content: "We start on Feb. 1 with breakfast at 9am. Gently Reminded.", member_id: 6
+  Post.create! post_content: "We have donuts!!", member_id: 5
 
-  Post.create! user_id: 1, room_id: 3, post_content: "Roooooby 4lyfe"
+  Post.create! post_content: "Roooooby 4lyfe", member_id: 7
 end
