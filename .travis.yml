@@ -1,8 +1,17 @@
 language: ruby
 rvm:
-  - 2.3.0
+- 2.3.0
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: KWaxZjKezqQ8cKj3qMo3kdh0J7vx2tXxd5W1BSnIArLnHcBFrbtUbgg9M7YOXKKs0lWLv5/oXMuqu0hNE4YtUOKMcJG6cGVqlO9xuEXavTFImxZNAwrNjTP5IzinAxYA7eOdHSN9GY4Y/xOHLAX4/wWwYYW2QL9CKbxkcg/KEf0Imxsxxjg0VQyIrPGkjISFiNaj6/TIMEBrvh9YZwGCuf7lnXJYjwoD743OoJhhsjuuMCMNMYYRA1ktgdITQqJH0LBTMf0FFNZy2be2LXNiut6Gp9S6jiCvSV3C4/RJSPqbFJJIdion32bww7h1V7LRO58PYDwJvbr8VJ8HOa6+xwaxlQf/8u403JHJ8bu6pFwdh6SYunXwZ0AB4cpG4vewNIRo5KdgnPFCLASMzq1kNVksE5I8tk5XQd5HwZOOtSg3XJc+51VcW8HLbX9H2TxmYc8KXmitBXF2M/drtLLIuP+VZzYqe4x7HyJgV8M+qpYBgOhcvQi83ojKP+O0FwaqDWeQ6qBtpBqZJSHiUxV1sZ9LJHuh8oHQhxZB7q1MLm0wUBiuesNaoWNg0k3JH64qBppXdfv2Vgv277xwYn0Mxdpl8t2mvpw6Eg5R5nWk59DC4xCQCI8bkNgGyHd5yri7l0sj7Y4kHG4B3VbAVD5VWxNH9ZOHhGmpOjIuZtuy0jQ=
+  app: emilycritter-slack
+  on:
+    repo: emilycritter/tiy-lab8-slack
+run:
+  -"rake db:migrate"
