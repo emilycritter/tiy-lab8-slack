@@ -8,6 +8,6 @@ class RoomsController < ApplicationController
   end
 
   def show
-
+    @room = Room.find_by name: params[:name]
   end
 end

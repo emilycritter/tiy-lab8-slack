@@ -1,1 +1,6 @@
 rooms#show
+
+<% @room.posts.each do |post| %>
+  <%= post.user.name %>
+  <%= markdown post.post_content %>
+<% end %>
