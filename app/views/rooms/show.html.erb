@@ -1,7 +1,49 @@
-rooms#show
+<div class="row">
+  <div class="col-md-2">
 
-<% @posts.each do |post| %>
-  <%= post.member.user.photo %>
-  <%= post.member.user.name %>
-  <%= markdown post.post_content %>
-<% end %>
+    <% if @current_user %>
+
+    <div class="user">
+      <h1>TIY Students</h1>
+      <p><%= @current_user.name %></p>
+    </div>
+
+    <div class="details">
+      <div class="header">
+        <h2>CHANNELS<small>(<%= @all_rooms %>)</small></h2>
+        <%= link_to room_new_path do %>
+          <i class="fa fa-plus-circle"></i>
+        <% end %>
+      </div>
+      <% @current_user.members.each do |member| %>
+        <p id="<%= 'current' if member.room.name == @room.name %>">
+          # &nbsp;<%= member.room.name %>
+        </p>
+      <% end %>
+    </div>
+    <br>
+    <br>
+    <div class="details">
+      <div class="header">
+        <h2>DIRECT MESSAGES<small>(<%= @all_users %>)</small></h2>
+        <i class="fa fa-plus-circle"></i>
+      </div>
+      <p>
+
+      </p>
+    </div>
+
+    <% end %>
+
+  </div>
+
+  <div class="col-md-10">
+    <% @posts.each do |post| %>
+      <%= post.member.user.photo %>
+      <%= post.member.user.name %>
+      <%= markdown post.post_content %>
+    <% end %>
+
+  </div>
+
+</div>
