@@ -15,11 +15,14 @@ $turquoise: #38978D;
 $purple: #4D394B;
 $dark-purple: #3E313C;
 $nav-spacing: 20px;
+$light-grey: #E8E8E8;
+$dark-grey: #7C6A7A;
 
 
 body {
   background: $background-color;
   color: $text-color;
+  font-family: $header-font;
 }
 html, body {
   height: 100%;
@@ -55,6 +58,7 @@ html, body {
   color: $link-color;
   font-family: $header-font;
   padding-right: 0;
+  height: 100%;
   .user {
     padding: 0 $nav-spacing;
     width: 100%;
@@ -89,15 +93,15 @@ html, body {
     }
   }
   .details {
+    a {
+      color: $link-color;
+    }
     .header {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       margin: 0 $nav-spacing;
-      a {
-        color: $link-color;
-      }
       i {
         margin: 0;
         font-size: 14px;
@@ -108,7 +112,7 @@ html, body {
         font-size: 14px;
         small {
           font-size: 13px;
-          color: #7C6A7A;
+          color: $dark-grey;
         }
         &:hover {
           color: #ffffff;
@@ -128,6 +132,33 @@ html, body {
       background-color: $turquoise;
       color: #ffffff;
     }
+  }
+}
 
+.col-md-10 {
+  padding: 0;
+  .channel-title {
+    padding: 10px;
+    border-bottom: 1px solid $light-grey;
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: $dark-grey;
+    }
+  }
+  .channel-posts {
+    padding: 10px;
+    height: 100%;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    background-color: $background-color;
+    z-index: 1;
   }
 }

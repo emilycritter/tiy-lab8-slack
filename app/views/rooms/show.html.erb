@@ -17,7 +17,7 @@
       </div>
       <% @current_user.members.each do |member| %>
         <p id="<%= 'current' if member.room.name == @room.name %>">
-          # &nbsp;<%= member.room.name %>
+          <a href="/rooms/<%= member.room.name %>"># &nbsp;<%= member.room.name %></a>
         </p>
       <% end %>
     </div>
@@ -38,11 +38,24 @@
   </div>
 
   <div class="col-md-10">
-    <% @posts.each do |post| %>
-      <%= post.member.user.photo %>
-      <%= post.member.user.name %>
-      <%= markdown post.post_content %>
-    <% end %>
+    <div class="channel-title">
+      <h1>#<%= @room.name %></h1>
+      <p>
+        <%= @members.count %> members <%= "| #{@room.description}" if @room.description %>
+      </p>
+    </div>
+
+    <div class="channel-posts" data-spy="scroll" data-target=".component" data-offset="50">
+      <% @posts.each do |post| %>
+        <%= post.member.user.photo %>
+        <%= post.member.user.name %>
+        <%= markdown post.post_content %>
+      <% end %>
+    </div>
+
+    <div class="footer">
+      im the footer. this is where new posts will be input
+    </div>
 
   </div>
 
