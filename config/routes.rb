@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  use_doorkeeper
+
   root 'home#index'
 
   get 'sign_in' => 'sessions#new', as: :sign_in
@@ -11,6 +13,13 @@ Rails.application.routes.draw do
   get 'rooms/:name' => 'rooms#show', as: :room
   get 'rooms/new' => 'rooms#new', as: :room_new
   get 'rooms/create' => 'rooms#create'
+
+  namespace :api do
+    resources :rooms
+    post 'users' => 'users#create'
+    delete 'users/:id' => 'users#delete'
+    get 'me' => 'users#show'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
