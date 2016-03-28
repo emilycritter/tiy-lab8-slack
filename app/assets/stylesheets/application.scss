@@ -1,0 +1,30 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+
+#new-user {
+  max-width: 500px;
+  text-align: center;
+  .form-control {
+    text-align: center;
+  }
+  .help-block {
+    color: #E74C3C;
+    font-size: 14px;
+  }
+  #add-photo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  small {
+    color: #999999;
+    font-size: 14px;
+  }
+  h4 {
+    color: #999999;
+  }
+}
