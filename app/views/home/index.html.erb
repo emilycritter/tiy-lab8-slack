@@ -1,2 +1,37 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="home" style="background-image: url('/assets/home_background.jpg')">
+
+  <nav>
+    <div class="nav-controls" id="left">
+      <i class="fa fa-slack" style="background: white; padding: 2px;"></i>
+      <p>slack</p>
+    </div>
+    <div class="nav-controls" id="right">
+      <% if @current_user && @current_user.members.first %>
+        <%= link_to room_path(name: @current_user.members.first.room.name) do %>
+          <i class="fa fa-comment"></i>
+        <% end %>
+      <% end %>
+      <div class="navbar-btn">
+        <% if @current_user %>
+          <%= link_to "Sign out", sign_out_path, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Sign in", sign_in_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+
+  </nav>
+
+  <div class="container">
+    <br>
+    <br>
+    <div class="center-tagline">
+      A messaging app for teams who are <em>changing</em> the <em>world!!</em>
+    </div>
+    <br>
+    <br>
+    <strong>The Iron Yard</strong> is one of tens of thousands of teams around
+    the world using <strong>Slack</strong> to make their working lives simpler, more pleasant,
+    and more productive.
+  </div>
+</div>

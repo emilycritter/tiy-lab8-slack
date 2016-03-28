@@ -1,6 +1,62 @@
-rooms#show
+<div class="row">
+  <div class="col-md-2">
 
-<% @room.posts.each do |post| %>
-  <%= post.user.name %>
-  <%= markdown post.post_content %>
-<% end %>
+    <% if @current_user %>
+
+    <div class="user">
+      <h1>TIY Students</h1>
+      <p><%= @current_user.name %></p>
+    </div>
+
+    <div class="details">
+      <div class="header">
+        <h2>CHANNELS<small>(<%= @all_rooms %>)</small></h2>
+        <%= link_to room_new_path do %>
+          <i class="fa fa-plus-circle"></i>
+        <% end %>
+      </div>
+      <% @current_user.members.each do |member| %>
+        <p id="<%= 'current' if member.room.name == @room.name %>">
+          <a href="/rooms/<%= member.room.name %>"># &nbsp;<%= member.room.name %></a>
+        </p>
+      <% end %>
+    </div>
+    <br>
+    <br>
+    <div class="details">
+      <div class="header">
+        <h2>DIRECT MESSAGES<small>(<%= @all_users %>)</small></h2>
+        <i class="fa fa-plus-circle"></i>
+      </div>
+      <p>
+
+      </p>
+    </div>
+
+    <% end %>
+
+  </div>
+
+  <div class="col-md-10">
+    <div class="channel-title">
+      <h1>#<%= @room.name %></h1>
+      <p>
+        <%= @members.count %> members <%= "| #{@room.description}" if @room.description %>
+      </p>
+    </div>
+
+    <div class="channel-posts" data-spy="scroll" data-target=".component" data-offset="50">
+      <% @posts.each do |post| %>
+        <%= post.member.user.photo %>
+        <%= post.member.user.name %>
+        <%= markdown post.post_content %>
+      <% end %>
+    </div>
+
+    <div class="footer">
+      im the footer. this is where new posts will be input
+    </div>
+
+  </div>
+
+</div>

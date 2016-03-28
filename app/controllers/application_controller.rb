@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     if session[:user_id].present?
       @current_user = User.find_by id: session[:user_id]
     end
+
+    @all_rooms = Room.count
+    @all_users = User.count
   end
 
   def store_location

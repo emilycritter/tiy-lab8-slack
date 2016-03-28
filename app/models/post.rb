@@ -1,6 +1,5 @@
 class Post < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :room
+  belongs_to :member
 
-  validates :post_content, :user_id, :room_id, presence: true
+  validates :post_content, :member_id, presence: true
 end

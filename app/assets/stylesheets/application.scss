@@ -7,6 +7,26 @@
 @import 'sessions';
 @import 'users';
 
+$background-color: #ffffff;
+$text-color: #2C2D30;
+$link-color: #A292A0;
+$header-font: 'Lato', sans-serif;
+$turquoise: #38978D;
+$purple: #4D394B;
+$dark-purple: #3E313C;
+$nav-spacing: 20px;
+$light-grey: #E8E8E8;
+$dark-grey: #7C6A7A;
+
+
+body {
+  background: $background-color;
+  color: $text-color;
+  font-family: $header-font;
+}
+html, body {
+  height: 100%;
+}
 
 #new-user {
   max-width: 500px;
@@ -30,5 +50,115 @@
   }
   h4 {
     color: #999999;
+  }
+}
+
+.col-md-2 {
+  background-color: $purple;
+  color: $link-color;
+  font-family: $header-font;
+  padding-right: 0;
+  height: 100%;
+  .user {
+    padding: 0 $nav-spacing;
+    width: 100%;
+    h1 {
+      font-size: 18px;
+      color: $background-color;
+      padding-top: $nav-spacing / 2;
+      margin: 0;
+      font-weight: 700;
+    }
+    p {
+      position: relative;
+      left: 12px;
+      font-size: 12px;
+      line-height: 14px;
+      margin-top: 4px;
+      padding-bottom: $nav-spacing / 2;
+    }
+    p::before {
+      content: '';
+      left: -12px;
+      top: 3px;
+      display: block;
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      background: $turquoise;
+    }
+    &:hover {
+      background-color: $dark-purple;
+    }
+  }
+  .details {
+    a {
+      color: $link-color;
+    }
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 $nav-spacing;
+      i {
+        margin: 0;
+        font-size: 14px;
+        color: #7C6A7A;
+      }
+      h2 {
+        margin: 0;
+        font-size: 14px;
+        small {
+          font-size: 13px;
+          color: $dark-grey;
+        }
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+    p {
+      font-size: 16px;
+      padding: 0 $nav-spacing 2px;
+      margin: 0;
+      font-weight: lighter;
+      &:hover {
+        background-color: $dark-purple;
+      }
+    }
+    #current {
+      background-color: $turquoise;
+      color: #ffffff;
+    }
+  }
+}
+
+.col-md-10 {
+  padding: 0;
+  .channel-title {
+    padding: 10px;
+    border-bottom: 1px solid $light-grey;
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: $dark-grey;
+    }
+  }
+  .channel-posts {
+    padding: 10px;
+    height: 100%;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    background-color: $background-color;
+    z-index: 1;
   }
 }
