@@ -13,6 +13,7 @@ if room.posts
     json.user_photo_url attachment_url(post.member.user, :photo, :fill, 300, 300, format: "jpg") if post.member.user.photo
     json.created_at post.created_at
     json.updated_at post.updated_at
+    json.custom_timestamp post.custom_timestamp
   end
 end
 if room.members

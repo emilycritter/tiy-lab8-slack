@@ -12,7 +12,7 @@ var PostDetails = React.createClass({
       </div>
       <div className="post-details">
         <div className="user">
-          <p>{post.user.name} <small>{post.created_at}</small></p>
+          <p>{post.user.name} <small>{post.custom_timestamp}</small></p>
         </div>
          <div className="post-content" dangerouslySetInnerHTML={{__html: post.content_markdown}}></div>
       </div>

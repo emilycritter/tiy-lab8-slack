@@ -3,6 +3,10 @@ class Post < ActiveRecord::Base
 
   validates :post_content, :member_id, presence: true
 
+  def custom_timestamp
+    created_at.strftime '%b %e, %l:%M %p'
+  end
+
   def post_markdown
     markdown post_content
   end
@@ -51,5 +55,5 @@ class Post < ActiveRecord::Base
     }
     Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
   end
-  
+
 end

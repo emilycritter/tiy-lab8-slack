@@ -1,8 +1,11 @@
+$text-color: #2C2D30;
+
 .post {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 10px;
+  color: $text-color;
   .photo-thumbnail {
     width: 50px;
     .thumbnail {
@@ -17,6 +20,9 @@
   }
   .post-details {
     margin-left: 10px;
+    .user {
+      color: $text-color;
+    }
   }
   &:hover {
     background-color: #F9F9F9;
