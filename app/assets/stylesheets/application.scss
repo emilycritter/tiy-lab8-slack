@@ -17,6 +17,7 @@ $dark-purple: #3E313C;
 $nav-spacing: 20px;
 $light-grey: #E8E8E8;
 $dark-grey: #7C6A7A;
+$grey: #999999;
 
 
 body {
@@ -24,13 +25,42 @@ body {
   color: $text-color;
   font-family: $header-font;
 }
-html, body {
-  height: 100%;
+.user {
+  color: $font-color-white;
+  min-height: 100%;
+  position: relative;
+
+  .background-image {
+    position: absolute;
+    left: 0;
+    top: -10px;
+    filter: brightness(50%);
+    -webkit-filter: brightness(50%);
+    -moz-filter: brightness(50%);
+    -o-filter: brightness(50%);
+    -ms-filter: brightness(50%);
+    z-index: -1;
+    max-width: 100%;
+    min-height: 100%;
+  }
+  .thumbnail {
+    padding: 10px;
+    margin: 10px auto;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    background-color: #ffffff;
+    color: $grey;
+    h4 {
+      a {
+        text-decoration: none;
+        color: $grey;
+      }
+    }
+  }
 }
 
 #new-user {
-  max-width: 500px;
-  text-align: center;
   .form-control {
     text-align: center;
   }
@@ -45,11 +75,15 @@ html, body {
     align-items: center;
   }
   small {
-    color: #999999;
     font-size: 14px;
   }
-  h4 {
-    color: #999999;
+}
+#new-session {
+  .form-group {
+    input {
+      text-align: center;
+      font-size: 14px;
+    }
   }
 }
 
