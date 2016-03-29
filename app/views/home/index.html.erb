@@ -10,6 +10,10 @@
         <%= link_to room_path(name: @current_user.members.first.room.name, id: @current_user.members.first.room.id) do %>
           <i class="fa fa-comment"></i>
         <% end %>
+      <% elsif @current_user %>
+        <%= link_to rooms_path do %>
+          <i class="fa fa-plus-circle"></i>
+        <% end %>
       <% end %>
       <div class="navbar-btn">
         <% if @current_user %>

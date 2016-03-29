@@ -7,10 +7,41 @@ class RoomsController < ApplicationController
     end
   end
 
+  def index
+    @rooms = Room.all.order("name asc")
+  end
+
   def show
     @room = Room.find_by name: params[:name]
     @members = Member.where room_id: @room.id
     all_member_ids = @room.members.pluck(:id)
     @posts = Post.where(member_id: all_member_ids).order("created_at desc")
   end
+
+  def new
+  end
+
+  def create
+  end
+  
+  def join_room
+    @room = Room.find_by id: params[:id]
+    member = Member.new
+    member.user = @current_user
+    member.room = @room
+
+    if member.save
+      redirect_to rooms_path
+    else
+      redirect_to rooms_path
+    end
+  end
+
+  def leave_room
+    @room = Room.find_by id: params[:id]
+    member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
+    member.destroy
+    redirect_to rooms_path
+  end
+
 end

@@ -1,0 +1,44 @@
+<div class="options-page">
+  <div class="thumbnail">
+    <div class="header">
+      <h1>New Room</h1>
+      <h2><%= link_to "Return to Rooms List", rooms_path %></h2>
+    </div>
+    <div class="search-nav">
+
+    </div>
+    <div class="room-list">
+      <h6>Channels you can join</h6>
+      <% @rooms.each do |room| %>
+        <hr>
+        <div class="rooms">
+          <div class="details">
+            <h5>
+              <%= link_to room_path(name: room.name, id: room.id) do %>
+                # <%= room.name %>
+                <small>
+                  <% if room.members.find_by(user_id: @current_user.id, room_id: room.id) %>
+                    (current member) |
+                    <%= link_to "leave room", leave_room_path(id: room.id), method: :delete %>
+                  <% else %>
+                    <%= link_to "join room", join_room_path(id: room.id), method: :post %>
+                  <% end %>
+                </small>
+              <% end %>
+            </h5>
+            <p>
+              Created by <span><%= room.members.where(creator_boolean: true).first.user.name %></span>
+            </p>
+            <p>
+              <%= room.description %>
+            </p>
+          </div>
+          <div class="member-count">
+            <i class="fa fa-user"></i> &nbsp;
+            <%= room.members.count %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
