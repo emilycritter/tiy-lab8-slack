@@ -1,7 +1,10 @@
-<div class="container" id="new-user">
-  <div class="thumbnail">
+<div class="user">
 
-    <h1>Sign Up</h1>
+  <%= image_tag("/assets/home_background.jpg", class: "background-image")%>
+
+  <div class="thumbnail" id="new-user">
+
+    <h2>Sign Up</h2>
     <br>
 
       <%= form_for @user do |f| %>
@@ -56,4 +59,5 @@
       <% end %>
 
   </div>
+
 </div>

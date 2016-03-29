@@ -25,21 +25,48 @@ body {
   color: $text-color;
   font-family: $header-font;
 }
+.user {
+  color: $font-color-white;
+  min-height: 100%;
+  position: relative;
+
+  .background-image {
+    position: absolute;
+    left: 0;
+    top: -10px;
+    filter: brightness(50%);
+    -webkit-filter: brightness(50%);
+    -moz-filter: brightness(50%);
+    -o-filter: brightness(50%);
+    -ms-filter: brightness(50%);
+    z-index: -1;
+    max-width: 100%;
+    min-height: 100%;
+  }
+  .thumbnail {
+    padding: 10px;
+    margin: 10px auto;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    background-color: #ffffff;
+    color: $grey;
+    h4 {
+      a {
+        text-decoration: none;
+        color: $grey;
+      }
+    }
+  }
+}
 
 #new-user {
-  max-width: 500px;
-  text-align: center;
-  background-color: #ffffff;
-  color: $grey;
   .form-control {
     text-align: center;
   }
   .help-block {
     color: #E74C3C;
     font-size: 14px;
-  }
-  .thumbnail {
-    padding: 10px;
   }
   #add-photo {
     display: flex;
@@ -50,30 +77,12 @@ body {
   small {
     font-size: 14px;
   }
-  h4 {
-    a {
-      text-decoration: none;
-      color: $grey;
-    }
-  }
 }
 #new-session {
-  max-width: 500px;
-  text-align: center;
-  color: $grey;
-  .thumbnail {
-    padding: 10px;
-  }
   .form-group {
     input {
       text-align: center;
       font-size: 14px;
-    }
-  }
-  h4 {
-    a {
-      text-decoration: none;
-      color: $grey;
     }
   }
 }
