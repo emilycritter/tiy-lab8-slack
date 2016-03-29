@@ -10,8 +10,12 @@
 
     <div class="details">
       <div class="header">
-        <h2>CHANNELS<small>(<%= @all_rooms %>)</small></h2>
-        <%= link_to room_new_path do %>
+        <h2>
+          <%= link_to rooms_path do %>
+            CHANNELS<small>(<%= @all_rooms %>)</small>
+          <% end %>
+        </h2>
+        <%= link_to new_room_path do %>
           <i class="fa fa-plus-circle"></i>
         <% end %>
       </div>

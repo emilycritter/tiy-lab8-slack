@@ -25,6 +25,9 @@ body {
   color: $text-color;
   font-family: $header-font;
 }
+.thumbnail {
+  margin: 10px auto;
+}
 .user {
   color: $font-color-white;
   min-height: 100%;
@@ -86,7 +89,68 @@ body {
     }
   }
 }
-
+.options-page {
+  text-align: center;
+  font-family: $header-font;
+  font-weight: 300;
+  .thumbnail {
+    max-width: 70%;
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      h1 {
+        font-family: $header-font;
+        font-weight: 700;
+        small {
+          a {
+            color: $text-color;
+          }
+        }
+      }
+      .btn {
+        height: 36px;
+      }
+    }
+    hr {
+      margin: 0;
+    }
+    .room-list {
+      h6 {
+        padding-left: 20px;
+        text-align: left;
+      }
+    }
+    .rooms {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      .details {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        p {
+          font-style: italic;
+          margin: 0;
+          span {
+            color: darken($text-color, 40%);
+          }
+        }
+      }
+      .member-count {
+      }
+    }
+    .form {
+      padding: 20px;
+      .form-control {
+        text-align: center;
+      }
+    }
+  }
+}
 .col-md-2 {
   background-color: $purple;
   color: $link-color;
@@ -151,6 +215,12 @@ body {
         &:hover {
           color: #ffffff;
         }
+        a {
+          text-decoration: none;
+          &:hover {
+            color: #ffffff;
+          }
+        }
       }
     }
     p {
@@ -165,6 +235,9 @@ body {
     #current {
       background-color: $turquoise;
       color: #ffffff;
+      a {
+        color: #ffffff;
+      }
     }
   }
 }

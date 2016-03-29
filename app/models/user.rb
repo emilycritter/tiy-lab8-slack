@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :rooms, through: :members, dependent: :destroy
   has_many :posts, through: :members, dependent: :destroy
 
