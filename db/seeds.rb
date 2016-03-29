@@ -64,5 +64,5 @@ if Post.count == 0
   Post.create! post_content: "We start on Feb. 1 with breakfast at 9am. Gently Reminded.", member_id: 6
   Post.create! post_content: "We have donuts!!", member_id: 5
 
-  Post.create! post_content: "Roooooby 4lyfe", member_id: 7
+  Post.create! post_content: "Roooooby 4lyfe. `best_language= 'ruby'`", member_id: 7
 end

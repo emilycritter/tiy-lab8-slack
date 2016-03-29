@@ -17,7 +17,7 @@
       </div>
       <% @current_user.members.each do |member| %>
         <p id="<%= 'current' if member.room.name == @room.name %>">
-          <a href="/rooms/<%= member.room.name %>"># &nbsp;<%= member.room.name %></a>
+          <a href="/rooms/<%= member.room.name %>/<%= member.room_id %>"># &nbsp;<%= member.room.name %></a>
         </p>
       <% end %>
     </div>
@@ -46,11 +46,6 @@
     </div>
 
     <div class="channel-posts" data-spy="scroll" data-target=".component" data-offset="50">
-      <% @posts.each do |post| %>
-        <%= post.member.user.photo %>
-        <%= post.member.user.name %>
-        <%= markdown post.post_content %>
-      <% end %>
       <%= react_component('PostList') %>
     </div>
 

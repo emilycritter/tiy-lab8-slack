@@ -10,12 +10,13 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#new', as: :new_user
   post 'sign_up' => 'users#create', as: :users
 
-  get 'rooms/:name' => 'rooms#show', as: :room
+  get 'rooms/:name/:id' => 'rooms#show', as: :room
   get 'rooms/new' => 'rooms#new', as: :room_new
   get 'rooms/create' => 'rooms#create'
 
   namespace :api do
     post 'users' => 'users#create'
+    patch 'users' => 'users#update'
     delete 'users/:id' => 'users#delete'
     get 'me' => 'users#show'
 

@@ -8,8 +8,9 @@ if room.posts
   json.posts room.posts do |post|
     json.id post.id
     json.content post.post_content
-    json.user_id post.member.user.id
-    json.user_name post.member.user.name
+    json.content_markdown post.post_markdown
+    json.user post.member.user
+    json.user_photo_url attachment_url(post.member.user, :photo, :fill, 300, 300, format: "jpg") if post.member.user.photo
     json.created_at post.created_at
     json.updated_at post.updated_at
   end
@@ -20,6 +21,7 @@ if room.members
     json.id member.id
     json.user_id member.user_id
     json.user_name member.user.name
+    json.user_photo_id member.user.photo_id if member.user.photo
     json.creator_boolean member.creator_boolean
   end
 end
