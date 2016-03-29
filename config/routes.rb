@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'rooms' => 'rooms#index', as: :rooms
   get 'rooms/:name/:id' => 'rooms#show', as: :room
   get 'rooms/new' => 'rooms#new', as: :new_room
-  post 'rooms/create' => 'rooms#create'
+  post 'rooms' => 'rooms#create'
   post 'rooms/join/:id' => 'rooms#join_room', as: :join_room
   delete 'rooms/leave/:id' => 'rooms#leave_room', as: :leave_room
 

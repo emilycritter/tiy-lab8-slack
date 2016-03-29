@@ -1,5 +1,5 @@
 class Room < ActiveRecord::Base
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :users, through: :members, dependent: :destroy
   has_many :posts, through: :members, dependent: :destroy
 

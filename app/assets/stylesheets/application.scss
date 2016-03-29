@@ -103,6 +103,11 @@ body {
       h1 {
         font-family: $header-font;
         font-weight: 700;
+        small {
+          a {
+            color: $text-color;
+          }
+        }
       }
       .btn {
         height: 36px;
@@ -136,6 +141,12 @@ body {
         }
       }
       .member-count {
+      }
+    }
+    .form {
+      padding: 20px;
+      .form-control {
+        text-align: center;
       }
     }
   }
@@ -204,6 +215,12 @@ body {
         &:hover {
           color: #ffffff;
         }
+        a {
+          text-decoration: none;
+          &:hover {
+            color: #ffffff;
+          }
+        }
       }
     }
     p {
@@ -218,6 +235,9 @@ body {
     #current {
       background-color: $turquoise;
       color: #ffffff;
+      a {
+        color: #ffffff;
+      }
     }
   }
 }
