@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :members
   has_many :rooms, through: :members, dependent: :destroy
+  has_many :posts, through: :members, dependent: :destroy
 
   validates :name, :email, :password, presence: true
   validates :name, :email, uniqueness: true
