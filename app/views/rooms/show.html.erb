@@ -17,7 +17,7 @@
       </div>
       <% @current_user.members.each do |member| %>
         <p id="<%= 'current' if member.room.name == @room.name %>">
-          <a href="/rooms/<%= member.room.name %>"># &nbsp;<%= member.room.name %></a>
+          <a href="/rooms/<%= member.room.name %>/<%= member.room_id %>"># &nbsp;<%= member.room.name %></a>
         </p>
       <% end %>
     </div>

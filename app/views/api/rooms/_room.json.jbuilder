@@ -10,6 +10,7 @@ if room.posts
     json.content post.post_content
     json.user_id post.member.user.id
     json.user_name post.member.user.name
+    json.user_photo post.member.user.photo if post.member.user.photo
     json.created_at post.created_at
     json.updated_at post.updated_at
   end
@@ -20,6 +21,7 @@ if room.members
     json.id member.id
     json.user_id member.user_id
     json.user_name member.user.name
+    json.user_photo_id member.user.photo_id if member.user.photo
     json.creator_boolean member.creator_boolean
   end
 end

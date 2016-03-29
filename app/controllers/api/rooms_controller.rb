@@ -1,6 +1,6 @@
 class Api::RoomsController < ApplicationController
   protect_from_forgery with: :null_session
-  before_action :doorkeeper_authorize!
+  # before_action :doorkeeper_authorize!
 
   def index
     @rooms = Room.all
@@ -8,6 +8,7 @@ class Api::RoomsController < ApplicationController
 
   def show
     @room = Room.find_by id: params[:id]
+    @posts = Post.where(room_id: @room.id)
   end
 
   def create
