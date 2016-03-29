@@ -1,56 +1,59 @@
 <div class="container" id="new-user">
-  <h1>Sign Up</h1>
-  <br>
+  <div class="thumbnail">
 
-    <%= form_for @user do |f| %>
-      <h4>Enter your email, username, and password.</h4>
-      <div class="form-group">
-        <%= f.label :email, style: "display: none;" %>
-        <%= f.email_field :email, class: "form-control", placeHolder: "you@domain.com" %>
-        <% if @user.errors[:email].any? %>
-          <span class="help-block"> email <%= @user.errors[:email].join(", ") %> </span>
-        <% end %>
-      </div>
+    <h1>Sign Up</h1>
+    <br>
 
-      <div class="form-group">
-        <%= f.label :name, style: "display: none;" %>
-        <%= f.text_field :name, class: "form-control", placeHolder: "username" %>
-        <% if @user.errors[:name].any? %>
-          <span class="help-block"> name <%= @user.errors[:name].join(", ") %> </span>
-        <% end %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password, style: "display: none;" %>
-        <%= f.password_field :password, class: "form-control", placeHolder: "password" %>
-        <% if @user.errors[:password].any? %>
-          <span class="help-block"> password <%= @user.errors[:password].first %> </span>
-        <% end %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation, style: "display: none;" %>
-        <%= f.password_field :password_confirmation, class: "form-control", placeHolder: "confirm password" %>
-        <% if @user.errors[:password_confirmation].any? %>
-          <span class="help-block"> <%= @user.errors[:password_confirmation].first %> </span>
-        <% end %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :photo, style: "display: none;"%>
-        <small class="text-muted">add profile picture</small>
-        <div class="form-control" id="add-photo">
-          <%= f.attachment_field :photo, class: "form-control-file" %>
+      <%= form_for @user do |f| %>
+        <h4>Enter your email, username, and password.</h4>
+        <div class="form-group">
+          <%= f.label :email, style: "display: none;" %>
+          <%= f.email_field :email, class: "form-control", placeHolder: "you@domain.com" %>
+          <% if @user.errors[:email].any? %>
+            <span class="help-block"> email <%= @user.errors[:email].join(", ") %> </span>
+          <% end %>
         </div>
-      </div>
 
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-      </div>
-      <div class="">
-        <%= link_to 'Sign In', sign_in_path %>
-      </div>
+        <div class="form-group">
+          <%= f.label :name, style: "display: none;" %>
+          <%= f.text_field :name, class: "form-control", placeHolder: "username" %>
+          <% if @user.errors[:name].any? %>
+            <span class="help-block"> name <%= @user.errors[:name].join(", ") %> </span>
+          <% end %>
+        </div>
 
-    <% end %>
+        <div class="form-group">
+          <%= f.label :password, style: "display: none;" %>
+          <%= f.password_field :password, class: "form-control", placeHolder: "password" %>
+          <% if @user.errors[:password].any? %>
+            <span class="help-block"> password <%= @user.errors[:password].first %> </span>
+          <% end %>
+        </div>
 
+        <div class="form-group">
+          <%= f.label :password_confirmation, style: "display: none;" %>
+          <%= f.password_field :password_confirmation, class: "form-control", placeHolder: "confirm password" %>
+          <% if @user.errors[:password_confirmation].any? %>
+            <span class="help-block"> <%= @user.errors[:password_confirmation].first %> </span>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :photo, style: "display: none;"%>
+          <small class="text-muted">add profile picture</small>
+          <div class="form-control" id="add-photo">
+            <%= f.attachment_field :photo, class: "form-control-file" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit class: "btn btn-default" %>
+        </div>
+        <div class="">
+          <h4><%= link_to 'Sign In', sign_in_path %></h4>
+        </div>
+
+      <% end %>
+
+  </div>
 </div>

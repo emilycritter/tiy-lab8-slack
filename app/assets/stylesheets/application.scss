@@ -17,6 +17,7 @@ $dark-purple: #3E313C;
 $nav-spacing: 20px;
 $light-grey: #E8E8E8;
 $dark-grey: #7C6A7A;
+$grey: #999999;
 
 
 body {
@@ -24,19 +25,21 @@ body {
   color: $text-color;
   font-family: $header-font;
 }
-html, body {
-  height: 100%;
-}
 
 #new-user {
   max-width: 500px;
   text-align: center;
+  background-color: #ffffff;
+  color: $grey;
   .form-control {
     text-align: center;
   }
   .help-block {
     color: #E74C3C;
     font-size: 14px;
+  }
+  .thumbnail {
+    padding: 10px;
   }
   #add-photo {
     display: flex;
@@ -45,11 +48,33 @@ html, body {
     align-items: center;
   }
   small {
-    color: #999999;
     font-size: 14px;
   }
   h4 {
-    color: #999999;
+    a {
+      text-decoration: none;
+      color: $grey;
+    }
+  }
+}
+#new-session {
+  max-width: 500px;
+  text-align: center;
+  color: $grey;
+  .thumbnail {
+    padding: 10px;
+  }
+  .form-group {
+    input {
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+  h4 {
+    a {
+      text-decoration: none;
+      color: $grey;
+    }
   }
 }
 
