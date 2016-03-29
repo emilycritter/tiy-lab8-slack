@@ -8,7 +8,7 @@ class Api::RoomsController < ApplicationController
 
   def show
     @room = Room.find_by id: params[:id]
-    @posts = Post.where(room_id: @room.id)
+    @posts = Post.where(room_id: @room.id).order("create_at desc")
   end
 
   def create

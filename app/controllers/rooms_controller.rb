@@ -11,6 +11,6 @@ class RoomsController < ApplicationController
     @room = Room.find_by name: params[:name]
     @members = Member.where room_id: @room.id
     all_member_ids = @room.members.pluck(:id)
-    @posts = Post.where member_id: all_member_ids
+    @posts = Post.where(member_id: all_member_ids).order("created_at desc")
   end
 end

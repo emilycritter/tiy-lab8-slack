@@ -12,9 +12,9 @@ var PostList = React.createClass({
   componentDidMount(){
     var component = this;
     component.fetchPosts();
-    // this.autoUpdatingInterval = setInterval(function(){
-    //   component.fetchPosts()
-    // }, 3000)
+    this.autoUpdatingInterval = setInterval(function(){
+      component.fetchPosts()
+    }, 3000)
   },
 
   componentWillUnMount(){
@@ -32,18 +32,15 @@ var PostList = React.createClass({
       return r.json();
     })
     .then (function(json) {
-      console.log(json.room);
-      console.log(json.room.posts);
       component.setState({
         room: json.room,
         posts: json.room.posts
       })
-      console.log(component.state.posts);
     })
   },
 
   render: function() {
-    return <div>
+    return <div className="component">
       {this.state.posts.map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}

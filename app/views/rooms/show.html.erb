@@ -46,11 +46,6 @@
     </div>
 
     <div class="channel-posts" data-spy="scroll" data-target=".component" data-offset="50">
-      <% @posts.each do |post| %>
-        <%= post.member.user.photo %>
-        <%= post.member.user.name %>
-        <%= markdown post.post_content %>
-      <% end %>
       <%= react_component('PostList') %>
     </div>
 

@@ -9,7 +9,32 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+
+    url = params[:user][:photo_url]
+    if url.present?
+      open(url, "rb") do |file|
+        @user.photo = file
+      end
+    end
+
     if @user.save
+      render :show
+    else
+      render json: @user.errors, status: 422
+    end
+  end
+
+  def update
+    @user = User.find_by id: current_user.id
+
+    url = params[:user][:photo_url]
+    if url.present?
+      open(url, "rb") do |file|
+        @user.photo = file
+      end
+    end
+
+    if @user.update user_params
       render :show
     else
       render json: @user.errors, status: 422
@@ -25,7 +50,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :photo)
   end
 
   def current_user
