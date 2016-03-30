@@ -1,6 +1,5 @@
 class Api::RoomsController < ApplicationController
-  protect_from_forgery with: :null_session
-  # before_action :doorkeeper_authorize!
+  skip_before_filter :verify_authenticity_token
 
   def index
     @rooms = Room.all
@@ -39,18 +38,13 @@ class Api::RoomsController < ApplicationController
     @room = Room.find_by id: params[:id]
     @post = Post.new
 
-    if current_user
-      @post.user = current_user
-      @member = Member.find_by(room_id: @room.id, user_id: current_user.id)
-      @post.member_id = @member.id
-    elsif @current_user
-      @post.user = @current_user
-      @member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
-      @post.member_id = @member.id
-    end
+    @post.user = @current_user
 
     @post.room = @room
-    @post.post_content = params[:post_content]
+    @post.post_content = params[:post][:post_content]
+
+    @post.member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
+
 
     if @post.save
       render :show
@@ -62,7 +56,7 @@ class Api::RoomsController < ApplicationController
   def delete_post
     @room = Room.find_by id: params[:id]
     @post = Post.find_by id: params[:id]
-    if @post.member.user == current_user
+    if @post.member.user == @current_user
       @post.destroy
       head :ok
     end
@@ -82,20 +76,12 @@ class Api::RoomsController < ApplicationController
 
   def delete_user
     @room = Room.find_by id: params[:id]
-    @member = Member.find_by(room_id: @room.id, user_id: current_user.id)
+    @member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
     @member.destroy
     render :show
   end
 
   private
-
-  def current_user
-    if doorkeeper_token
-      User.find(doorkeeper_token.resource_owner_id)
-    else
-      @current_user
-    end
-  end
 
   def room_params
     params.require(:room).permit(:name, :description)
