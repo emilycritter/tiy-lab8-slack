@@ -14,7 +14,15 @@ var PostList = React.createClass({
     component.fetchPosts();
     this.autoUpdatingInterval = setInterval(function(){
       component.fetchPosts()
-    }, 3000)
+    }, 3000);
+  },
+
+  componentDidUpdate(){
+    // console.log("componentDidUpdate");
+  },
+
+  componentWillUpdate(){
+    // console.log("componentWillUpdate");
   },
 
   componentWillUnmount(){
@@ -42,6 +50,7 @@ var PostList = React.createClass({
 
   render: function() {
     return <div className="channel-posts">
+      <button>Get Older Posts</button>
       {this.state.posts.slice(0, 100).reverse().map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}
