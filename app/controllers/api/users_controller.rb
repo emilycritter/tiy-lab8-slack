@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
   protect_from_forgery with: :null_session
 
   def show
-    @user = User.find_by id: current_user.id
+    @user = User.find_by id: @current_user.id
   end
 
   def create
@@ -25,7 +25,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by id: current_user.id
+    @user = User.find_by id: @current_user.id
 
     url = params[:user][:photo_url]
     if url.present?
@@ -42,7 +42,7 @@ class Api::UsersController < ApplicationController
   end
 
   def delete
-    @user = User.find_by id: current_user.id
+    @user = User.find_by id: @current_user.id
     @user.destroy
     head :ok
   end
@@ -51,10 +51,6 @@ class Api::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :photo)
-  end
-
-  def current_user
-    User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
   end
 
 end
