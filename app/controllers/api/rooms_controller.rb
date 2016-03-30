@@ -1,5 +1,5 @@
 class Api::RoomsController < ApplicationController
-  protect_from_forgery with: :null_session
+  skip_before_filter :verify_authenticity_token
 
   def index
     @rooms = Room.all
@@ -39,11 +39,12 @@ class Api::RoomsController < ApplicationController
     @post = Post.new
 
     @post.user = @current_user
-    @member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
-    @post.member_id = @member.id
 
     @post.room = @room
-    @post.post_content = params[:post_content]
+    @post.post_content = params[:post][:post_content]
+
+    @post.member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
+
 
     if @post.save
       render :show

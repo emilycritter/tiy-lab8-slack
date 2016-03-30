@@ -46,7 +46,8 @@ var AddPost = React.createClass({
       method: 'post',
       headers: {
        "Content-type": "application/json"
-    },
+      },
+      credentials: 'include',
       body: JSON.stringify(params)
     })
     .then(function(response){
