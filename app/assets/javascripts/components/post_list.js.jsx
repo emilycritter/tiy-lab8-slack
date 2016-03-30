@@ -12,9 +12,9 @@ var PostList = React.createClass({
   componentDidMount(){
     var component = this;
     component.fetchPosts();
-    // this.autoUpdatingInterval = setInterval(function(){
-      // component.fetchPosts()
-    // }, 3000);
+    this.autoUpdatingInterval = setInterval(function(){
+      component.fetchPosts()
+    }, 3000);
   },
 
   componentDidUpdate(){
@@ -45,7 +45,7 @@ var PostList = React.createClass({
         posts: json.room.posts
       })
     });
-    console.log(window.location.pathname);
+    // console.log(window.location.pathname);
   },
 
   render: function() {

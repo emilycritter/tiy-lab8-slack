@@ -2,11 +2,12 @@
   <div class="my-col-md-2">
     <div class="mypanel">
       <% if @current_user %>
-
-      <div class="user">
-        <h1>TIY Students</h1>
-        <p><%= @current_user.name %></p>
-      </div>
+      <%= link_to root_path do %>
+        <div class="user">
+          <h1>TIY Students</h1>
+          <p><%= @current_user.name %></p>
+        </div>
+      <% end %>
 
       <div class="details">
         <div class="header">
