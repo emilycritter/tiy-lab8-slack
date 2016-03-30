@@ -17,8 +17,8 @@ var PostList = React.createClass({
     }, 3000)
   },
 
-  componentWillUnMount(){
-    clearInterval(this.autoUpdatingInterval)
+  componentWillUnmount(){
+    clearInterval(this.autoUpdatingInterval);
   },
 
   fetchPosts(){
@@ -41,7 +41,7 @@ var PostList = React.createClass({
   },
 
   render: function() {
-    return <div className="component">
+    return <div className="channel-posts">
       {this.state.posts.slice(0, 100).reverse().map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}
