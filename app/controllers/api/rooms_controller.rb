@@ -40,7 +40,6 @@ class Api::RoomsController < ApplicationController
     @post = Post.new
     @post.user = @current_user
     @post.room = @room
-    # @post.member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
     @post.post_content = params[:post_content]
     if @post.save
       render :show
