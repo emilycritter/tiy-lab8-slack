@@ -70,6 +70,9 @@ if Post.count == 0
 
   Post.create! post_content: "We start on Feb. 1 with breakfast at 9am. Gently Reminded.", member_id: 6
   Post.create! post_content: "We have donuts!!", member_id: 5
+  Post.create! post_content: "![alt text](https://www.google.com/imgres?imgurl=http://media4.popsugar-assets.com/files/2014/08/08/878/n/1922507/caef16ec354ca23b_thumb_temp_cover_file32304521407524949.xxxlarge/i/Funny-Cat-GIFs.jpg&imgrefurl=http://www.popsugar.com/tech/Funny-Cat-GIFs-35436224&h=700&w=1024&tbnid=y1d8-VKPbwiLKM:&docid=ISVgIQ41-8i1-M&ei=Qv77VvLoAcjnmAGhnZLwDQ&tbm=isch&ved=0ahUKEwjykazj6ejLAhXIMyYKHaGOBN4QMwiKASgGMAY)", member_id: 4
+  Post.create! post_content: "I hate donuts", member_id: 4
+  Post.create! post_content: "Who invited Bob?", member_id: 6
 
   Post.create! post_content: "Roooooby 4lyfe. `best_language= 'ruby'`", member_id: 7
 
