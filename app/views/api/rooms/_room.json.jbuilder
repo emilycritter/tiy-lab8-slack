@@ -5,7 +5,7 @@ json.created_at room.created_at
 json.updated_at room.updated_at
 if room.posts
   json.post_count room.posts.count
-  json.posts room.posts do |post|
+  json.posts room.posts.order("created_at desc") do |post|
     json.id post.id
     json.content post.post_content
     json.content_markdown post.post_markdown

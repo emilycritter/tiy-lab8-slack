@@ -1,57 +1,55 @@
-<div class="row">
-  <div class="col-md-2">
+<div class="my-row">
+  <div class="my-col-md-2">
+    <div class="mypanel">
+      <% if @current_user %>
 
-    <% if @current_user %>
+      <div class="user">
+        <h1>TIY Students</h1>
+        <p><%= @current_user.name %></p>
+      </div>
 
-    <div class="user">
-      <h1>TIY Students</h1>
-      <p><%= @current_user.name %></p>
-    </div>
-
-    <div class="details">
-      <div class="header">
-        <h2>
-          <%= link_to rooms_path do %>
-            CHANNELS<small>(<%= @all_rooms %>)</small>
+      <div class="details">
+        <div class="header">
+          <h2>
+            <%= link_to rooms_path do %>
+              CHANNELS<small>(<%= @all_rooms %>)</small>
+            <% end %>
+          </h2>
+          <%= link_to new_room_path do %>
+            <i class="fa fa-plus-circle"></i>
           <% end %>
-        </h2>
-        <%= link_to new_room_path do %>
-          <i class="fa fa-plus-circle"></i>
+        </div>
+        <% @current_user.members.each do |member| %>
+          <p id="<%= 'current' if member.room.name == @room.name %>">
+            <a href="/rooms/<%= member.room.name %>/<%= member.room_id %>"># &nbsp;<%= member.room.name %></a>
+          </p>
         <% end %>
       </div>
-      <% @current_user.members.each do |member| %>
-        <p id="<%= 'current' if member.room.name == @room.name %>">
-          <a href="/rooms/<%= member.room.name %>/<%= member.room_id %>"># &nbsp;<%= member.room.name %></a>
+      <!-- <br>
+      <br>
+      <div class="details">
+        <div class="header">
+          <h2>DIRECT MESSAGES<small>(<%= @all_users %>)</small></h2>
+          <i class="fa fa-plus-circle"></i>
+        </div>
+        <p>
+
         </p>
+      </div> -->
+
       <% end %>
     </div>
-    <br>
-    <br>
-    <div class="details">
-      <div class="header">
-        <h2>DIRECT MESSAGES<small>(<%= @all_users %>)</small></h2>
-        <i class="fa fa-plus-circle"></i>
-      </div>
-      <p>
-
-      </p>
-    </div>
-
-    <% end %>
-
   </div>
 
-  <div class="col-md-10">
+  <div class="my-col-md-10">
     <div class="channel-title">
       <h1>#<%= @room.name %></h1>
       <p>
-        <%= @members.count %> members <%= "| #{@room.description}" if @room.description %>
+        <%= pluralize(@members.count, 'member') %> <%= "| #{@room.description}" if @room.description %>
       </p>
     </div>
 
-    <div class="channel-posts" data-spy="scroll" data-target=".component" data-offset="50">
-      <%= react_component('PostList') %>
-    </div>
+    <%= react_component('PostList') %>
 
     <div class="footer">
       im the footer. this is where new posts will be input

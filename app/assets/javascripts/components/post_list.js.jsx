@@ -14,11 +14,19 @@ var PostList = React.createClass({
     component.fetchPosts();
     this.autoUpdatingInterval = setInterval(function(){
       component.fetchPosts()
-    }, 3000)
+    }, 3000);
   },
 
-  componentWillUnMount(){
-    clearInterval(this.autoUpdatingInterval)
+  componentDidUpdate(){
+    // console.log("componentDidUpdate");
+  },
+
+  componentWillUpdate(){
+    // console.log("componentWillUpdate");
+  },
+
+  componentWillUnmount(){
+    clearInterval(this.autoUpdatingInterval);
   },
 
   fetchPosts(){
@@ -36,12 +44,14 @@ var PostList = React.createClass({
         room: json.room,
         posts: json.room.posts
       })
-    })
+    });
+    console.log(window.location.pathname);
   },
 
   render: function() {
-    return <div className="component">
-      {this.state.posts.map(function(thePost){
+    return <div className="channel-posts">
+      <button>Get Older Posts</button>
+      {this.state.posts.slice(0, 100).reverse().map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}
     </div>;

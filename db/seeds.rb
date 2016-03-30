@@ -41,6 +41,11 @@ if Room.count == 0
   room.name = "hou_feb2016_rails"
   room.description = "The most interesting class in the world"
   room.save
+
+  room = Room.new
+  room.name = "hou_random"
+  room.description = "So many posts, this room isn't worth joining"
+  room.save
 end
 
 if Member.count == 0
@@ -54,6 +59,8 @@ if Member.count == 0
 
   Member.create! user_id: 1, room_id: 3
   Member.create! user_id: 3, room_id: 3, creator_boolean: true
+
+  Member.create! user_id: 1, room_id: 4, creator_boolean: true
 end
 
 if Post.count == 0
@@ -65,4 +72,10 @@ if Post.count == 0
   Post.create! post_content: "We have donuts!!", member_id: 5
 
   Post.create! post_content: "Roooooby 4lyfe. `best_language= 'ruby'`", member_id: 7
+
+  Post.create! post_content: "First post in this nonsense room", member_id: 9
+  150.times do
+    Post.create! post_content: "Roooooby 4lyfe. `best_language= 'ruby'`", member_id: 9
+  end
+  Post.create! post_content: "Last post in this nonsense room", member_id: 9
 end
