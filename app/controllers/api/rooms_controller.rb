@@ -38,7 +38,9 @@ class Api::RoomsController < ApplicationController
   def add_post
     @room = Room.find_by id: params[:id]
     @post = Post.new
-    @post.member = Member.where(room_id: @room.id).find_by(user_id: current_user.id)
+    @post.user = @current_user
+    @post.room = @room
+    # @post.member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
     @post.post_content = params[:post_content]
     if @post.save
       render :show
@@ -70,7 +72,7 @@ class Api::RoomsController < ApplicationController
 
   def delete_user
     @room = Room.find_by id: params[:id]
-    @member = Member.where(room_id: @room.id).find_by(user_id: current_user.id)
+    @member = Member.where(room_id: @room.id).find_by(user_id: @current_user.id)
     @member.destroy
     render :show
   end
