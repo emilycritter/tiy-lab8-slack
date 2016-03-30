@@ -38,8 +38,20 @@ class Api::RoomsController < ApplicationController
   def add_post
     @room = Room.find_by id: params[:id]
     @post = Post.new
-    @post.member = Member.where(room_id: @room.id).find_by(user_id: current_user.id)
+
+    if current_user
+      @post.user = current_user
+      @member = Member.find_by(room_id: @room.id, user_id: current_user.id)
+      @post.member_id = @member.id
+    elsif @current_user
+      @post.user = @current_user
+      @member = Member.find_by(room_id: @room.id, user_id: @current_user.id)
+      @post.member_id = @member.id
+    end
+
+    @post.room = @room
     @post.post_content = params[:post_content]
+
     if @post.save
       render :show
     else
@@ -70,7 +82,7 @@ class Api::RoomsController < ApplicationController
 
   def delete_user
     @room = Room.find_by id: params[:id]
-    @member = Member.where(room_id: @room.id).find_by(user_id: current_user.id)
+    @member = Member.find_by(room_id: @room.id, user_id: current_user.id)
     @member.destroy
     render :show
   end
@@ -78,7 +90,11 @@ class Api::RoomsController < ApplicationController
   private
 
   def current_user
-    User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
+    if doorkeeper_token
+      User.find(doorkeeper_token.resource_owner_id)
+    else
+      @current_user
+    end
   end
 
   def room_params
