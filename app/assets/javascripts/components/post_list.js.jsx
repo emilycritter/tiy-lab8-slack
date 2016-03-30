@@ -5,16 +5,8 @@ var PostList = React.createClass({
   getInitialState(){
     return {
       room: '',
-      posts: [],
-      path: ''
+      posts: []
     }
-  },
-
-  getUrl(){
-    var component = this;
-    component.setState({
-      path: window.location.pathname
-    })
   },
 
   componentDidMount(){
@@ -22,8 +14,7 @@ var PostList = React.createClass({
     component.fetchPosts();
     this.autoUpdatingInterval = setInterval(function(){
       component.fetchPosts()
-    }, 3000);
-    getUrl()
+    }, 3000)
   },
 
   componentWillUnMount(){
@@ -47,10 +38,6 @@ var PostList = React.createClass({
       })
     });
     console.log(window.location.pathname);
-    console.log(this.path);
-    if (window.location.pathname !== this.path) {
-      this.componentWillUnMount()
-    }
   },
 
   render: function() {
