@@ -49,6 +49,7 @@ var PostList = React.createClass({
   },
 
   render: function() {
+    var component = this;
     return <div className="channel-posts">
       <button>Get Older Posts</button>
       {this.state.posts.slice(0, 100).reverse().map(function(thePost){
