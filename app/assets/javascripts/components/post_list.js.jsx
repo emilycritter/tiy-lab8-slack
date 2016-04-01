@@ -5,6 +5,7 @@ var PostList = React.createClass({
   getInitialState(){
     return {
       room: '',
+      addPostCount: 1,
       posts: []
     }
   },
@@ -48,11 +49,18 @@ var PostList = React.createClass({
     // console.log(window.location.pathname);
   },
 
+  loadPosts(){
+    var component = this;
+    this.setState({
+      addPostCount: component.state.addPostCount + 1,
+    });
+  },
+
   render: function() {
     var component = this;
     return <div className="channel-posts">
-      <button>Get Older Posts</button>
-      {this.state.posts.slice(0, 100).reverse().map(function(thePost){
+      <button onClick={this.loadPosts}>Get Older Posts</button>
+      {this.state.posts.slice(0, 100*this.state.addPostCount).reverse().map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}
     </div>;
