@@ -5,6 +5,7 @@ var PostList = React.createClass({
   getInitialState(){
     return {
       room: '',
+      addPostCount: 1,
       posts: []
     }
   },
@@ -12,9 +13,9 @@ var PostList = React.createClass({
   componentDidMount(){
     var component = this;
     component.fetchPosts();
-    // this.autoUpdatingInterval = setInterval(function(){
-      // component.fetchPosts()
-    // }, 3000);
+    this.autoUpdatingInterval = setInterval(function(){
+      component.fetchPosts()
+    }, 3000);
   },
 
   componentDidUpdate(){
@@ -35,7 +36,9 @@ var PostList = React.createClass({
     var lastParameter = pathArray.pop();
     var url = "/api/rooms/"+lastParameter;
     console.log("the url to fetch is: " +url);
-    fetch(url)
+    fetch(url, {
+      credentials: 'include'
+    })
     .then(function(r){
       return r.json();
     })
@@ -45,13 +48,29 @@ var PostList = React.createClass({
         posts: json.room.posts
       })
     });
-    console.log(window.location.pathname);
+  },
+
+  loadPosts(){
+    var component = this;
+    this.setState({
+      addPostCount: component.state.addPostCount + 1,
+    });
   },
 
   render: function() {
+    var component = this;
+    if (this.state.posts.length > (this.state.addPostCount * 100)) {
+      $(".get-old-posts").show();
+    } else {
+      $(".get-old-posts").hide();
+    };
+    $('.channel-posts').animate({scrollTop: 50000});
+
     return <div className="channel-posts">
-      <button>Get Older Posts</button>
-      {this.state.posts.slice(0, 100).reverse().map(function(thePost){
+      <div className="get-old-posts">
+        <button onClick={this.loadPosts} className="btn btn-default">Get Older Posts</button>
+      </div>
+      {this.state.posts.slice(0, 100*this.state.addPostCount).reverse().map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}
     </div>;
