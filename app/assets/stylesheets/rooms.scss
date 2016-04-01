@@ -162,6 +162,9 @@ body{
         border-radius: 5px;
         padding: 2px 5px;
       }
+      .post-content * {
+        max-width: 100%;
+      }
     }
     &:hover {
       background-color: #F9F9F9;
