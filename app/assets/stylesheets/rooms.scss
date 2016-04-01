@@ -147,12 +147,27 @@ body{
     }
     .post-details {
       margin-left: 10px;
+      width: 100%;
       .user {
         color: $text-color;
+        position: relative;
+        width: 100%;
+      }
+      .post-options {
+        display: none;
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        border: 1px solid $text-color;
+        border-radius: 5px;
+        padding: 2px 5px;
       }
     }
     &:hover {
       background-color: #F9F9F9;
+      .post-options {
+        display: block;
+      }
     }
   }
   .channel-title {
