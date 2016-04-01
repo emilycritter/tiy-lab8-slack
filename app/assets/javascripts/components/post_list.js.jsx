@@ -64,6 +64,8 @@ var PostList = React.createClass({
     } else {
       $(".get-old-posts").hide();
     };
+    $('.channel-posts').animate({scrollTop: 50000});
+
     return <div className="channel-posts">
       <div className="get-old-posts">
         <button onClick={this.loadPosts} className="btn btn-default">Get Older Posts</button>
