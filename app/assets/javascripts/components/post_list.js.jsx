@@ -58,8 +58,13 @@ var PostList = React.createClass({
 
   render: function() {
     var component = this;
+    if (this.state.posts.length > (this.state.addPostCount * 100)) {
+      $(".get-old-posts").show();
+    } else {
+      $(".get-old-posts").hide();
+    };
     return <div className="channel-posts">
-      <button onClick={this.loadPosts}>Get Older Posts</button>
+      <button onClick={this.loadPosts} className="get-old-posts">Get Older Posts</button>
       {this.state.posts.slice(0, 100*this.state.addPostCount).reverse().map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}
