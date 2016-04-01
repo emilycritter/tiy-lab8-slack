@@ -10,6 +10,7 @@ var PostDetails = React.createClass({
     $.ajax({
       url: '/api/rooms/' + roomId + '/posts/' + postId,
       type: 'DELETE',
+      credentials: 'include',
       dataType: 'json'
     })
   },
@@ -37,7 +38,6 @@ var PostDetails = React.createClass({
         </div>
          <div className="post-content" dangerouslySetInnerHTML={{__html: post.content_markdown}}></div>
       </div>
-
     </div>;
   }
 });

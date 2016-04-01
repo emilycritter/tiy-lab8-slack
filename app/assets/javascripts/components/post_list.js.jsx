@@ -36,7 +36,9 @@ var PostList = React.createClass({
     var lastParameter = pathArray.pop();
     var url = "/api/rooms/"+lastParameter;
     console.log("the url to fetch is: " +url);
-    fetch(url)
+    fetch(url, {
+      credentials: 'include'
+    })
     .then(function(r){
       return r.json();
     })
@@ -46,7 +48,6 @@ var PostList = React.createClass({
         posts: json.room.posts
       })
     });
-    // console.log(window.location.pathname);
   },
 
   loadPosts(){
@@ -64,7 +65,9 @@ var PostList = React.createClass({
       $(".get-old-posts").hide();
     };
     return <div className="channel-posts">
-      <button onClick={this.loadPosts} className="get-old-posts">Get Older Posts</button>
+      <div className="get-old-posts">
+        <button onClick={this.loadPosts} className="btn btn-default">Get Older Posts</button>
+      </div>
       {this.state.posts.slice(0, 100*this.state.addPostCount).reverse().map(function(thePost){
         return <PostDetails key={thePost.id} post={thePost} />
       })}
